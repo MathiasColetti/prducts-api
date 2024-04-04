@@ -35,7 +35,6 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-
     public ResponseEntity<Object> getOneProduct(@PathVariable(value = "id") UUID uuid) {
         Optional<ProductModel> productModel = productRepository.findById(uuid);
 
@@ -56,11 +55,6 @@ public class ProductController {
          var productModel = product.get();
          BeanUtils.copyProperties(productRecordDto, productModel);
          return ResponseEntity.status(HttpStatus.OK).body(productRepository.save(productModel));
-    }
-
-    @DeleteMapping("/product/{id}")
-    public ResponseEntity<Object> deleteProduct(@PathVariable(value = "id") UUID uuid){
-        Optional<ProductModel> productModel = productRepository.delete();
     }
 
 }
